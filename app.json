@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Calcy",
+    "name": "calcy",
     "slug": "calcy",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -39,7 +39,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "69420a33-e644-44d7-a494-fa415faab86c"
+        "projectId": "46acd6b0-7acd-43dd-a0d0-f72965ddbea9"
       }
     }
   }
