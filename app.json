@@ -19,7 +19,7 @@
       "icon": "./assets/images/logo.png",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/logo.png",
-        "backgroundColor": "transparent"
+        "backgroundColor": "#00000000"
       },
       "package": "com.sparshlohana.calculator"
     },
