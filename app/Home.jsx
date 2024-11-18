@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View, Vibration } from 'react-native'; // Import Vibration
 import { SafeAreaView } from 'react-native-safe-area-context';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { AntDesign, Entypo, Feather } from '@expo/vector-icons';
@@ -8,7 +8,10 @@ import { LinearGradient } from 'expo-linear-gradient';
 const OperatorButton = ({ children, onPress }) => (
     <TouchableOpacity
         activeOpacity={0.5}
-        onPress={onPress}
+        onPress={() => {
+            Vibration.vibrate(50);
+            onPress();
+        }}
         style={{
             borderRadius: 150,
             shadowColor: '#FAFF00',
@@ -40,6 +43,7 @@ const Home = () => {
     const [result, setResult] = useState(null);
 
     const handleNumberPress = (num) => {
+        Vibration.vibrate(50);
         if (result !== null) {
             setExpression(num);
             setResult(null);
@@ -49,6 +53,7 @@ const Home = () => {
     };
 
     const handleOperatorPress = (op) => {
+        Vibration.vibrate(50);
         if (result !== null) {
             setExpression(result + op);
             setResult(null);
@@ -63,6 +68,7 @@ const Home = () => {
     };
 
     const handleEquals = () => {
+        Vibration.vibrate(50);
         try {
             const evaluated = eval(expression);
             setResult(String(evaluated));
@@ -72,11 +78,13 @@ const Home = () => {
     };
 
     const handleClear = () => {
+        Vibration.vibrate(50);
         setExpression("");
         setResult(null);
     };
 
     const handleBackspace = () => {
+        Vibration.vibrate(50);
         if (result !== null) {
             setExpression("");
             setResult(null);
@@ -86,6 +94,7 @@ const Home = () => {
     };
 
     const handleDecimal = () => {
+        Vibration.vibrate(50);
         if (result !== null) {
             setExpression("0.");
             setResult(null);
@@ -109,7 +118,7 @@ const Home = () => {
                 {result !== null && (
                     <Text
                         style={{
-                            fontSize: 50, 
+                            fontSize: 50,
                             color: '#FFFFFF',
                             fontWeight: '500',
                         }}
