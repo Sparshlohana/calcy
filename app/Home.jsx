@@ -1,9 +1,13 @@
 import { useState } from 'react';
-import { Text, TouchableOpacity, View, Vibration } from 'react-native'; // Import Vibration
+import { Text, TouchableOpacity, View, Vibration, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { AntDesign, Entypo, Feather } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+
+const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
+
+const buttonSize = screenWidth * 0.2;
 
 const OperatorButton = ({ children, onPress }) => (
     <TouchableOpacity
@@ -13,7 +17,7 @@ const OperatorButton = ({ children, onPress }) => (
             onPress();
         }}
         style={{
-            borderRadius: 150,
+            borderRadius: buttonSize / 2,
             shadowColor: '#FAFF00',
             shadowOffset: { width: 10, height: 10 },
             shadowOpacity: 1,
@@ -22,15 +26,15 @@ const OperatorButton = ({ children, onPress }) => (
         }}
     >
         <LinearGradient
-            colors={['#FAFF00', '#FF00F5']}
+            colors={['#FAFF00', '#FF00F5']} 
             start={[0, -0.32]}
             end={[1.6, 1.6]}
             style={{
-                width: 80,
-                height: 80,
+                width: buttonSize,
+                height: buttonSize,
                 justifyContent: 'center',
                 alignItems: 'center',
-                borderRadius: 150,
+                borderRadius: buttonSize / 2,
             }}
         >
             {children}
@@ -108,7 +112,7 @@ const Home = () => {
             <View className="flex-[0.6] justify-end items-end">
                 <Text
                     style={{
-                        fontSize: result !== null ? 40 : 60,
+                        fontSize: result !== null ? screenHeight * 0.05 : screenHeight * 0.08,
                         color: result !== null ? '#A0A0A0' : '#FFFFFF',
                     }}
                     selectable
@@ -118,7 +122,7 @@ const Home = () => {
                 {result !== null && (
                     <Text
                         style={{
-                            fontSize: 50,
+                            fontSize: screenHeight * 0.06,
                             color: '#FFFFFF',
                             fontWeight: '500',
                         }}
@@ -133,22 +137,36 @@ const Home = () => {
                     <TouchableOpacity
                         onPress={handleClear}
                         activeOpacity={0.5}
-                        className="bg-[#333333] w-[80px] h-[80px] flex justify-center items-center rounded-full"
+                        style={{
+                            backgroundColor: '#333333',
+                            width: buttonSize,
+                            height: buttonSize,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            borderRadius: buttonSize / 2,
+                        }}
                     >
                         <Text className="text-4xl text-white">C</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={handleBackspace}
                         activeOpacity={0.5}
-                        className="bg-[#333333] w-[80px] h-[80px] flex justify-center items-center rounded-full"
+                        style={{
+                            backgroundColor: '#333333',
+                            width: buttonSize,
+                            height: buttonSize,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            borderRadius: buttonSize / 2,
+                        }}
                     >
-                        <FontAwesome5 name="backspace" size={28} color="white" />
+                        <FontAwesome5 name="backspace" size={buttonSize / 3} color="white" />
                     </TouchableOpacity>
                     <OperatorButton onPress={() => handleOperatorPress('%')}>
                         <Text className="text-4xl text-white">%</Text>
                     </OperatorButton>
                     <OperatorButton onPress={() => handleOperatorPress('/')}>
-                        <Feather name="divide" size={30} color="white" />
+                        <Feather name="divide" size={buttonSize / 3} color="white" />
                     </OperatorButton>
                 </View>
 
@@ -159,13 +177,20 @@ const Home = () => {
                             key={num}
                             onPress={() => handleNumberPress(String(num))}
                             activeOpacity={0.5}
-                            className="bg-[#333333] w-[80px] h-[80px] flex justify-center items-center rounded-full"
+                            style={{
+                                backgroundColor: '#333333',
+                                width: buttonSize,
+                                height: buttonSize,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                borderRadius: buttonSize / 2,
+                            }}
                         >
                             <Text className="text-4xl text-white">{num}</Text>
                         </TouchableOpacity>
                     ))}
                     <OperatorButton onPress={() => handleOperatorPress('*')}>
-                        <Entypo name="cross" size={32} color="white" />
+                        <Entypo name="cross" size={buttonSize / 2.5} color="white" />
                     </OperatorButton>
                 </View>
 
@@ -176,13 +201,20 @@ const Home = () => {
                             key={num}
                             onPress={() => handleNumberPress(String(num))}
                             activeOpacity={0.5}
-                            className="bg-[#333333] w-[80px] h-[80px] flex justify-center items-center rounded-full"
+                            style={{
+                                backgroundColor: '#333333',
+                                width: buttonSize,
+                                height: buttonSize,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                borderRadius: buttonSize / 2,
+                            }}
                         >
                             <Text className="text-4xl text-white">{num}</Text>
                         </TouchableOpacity>
                     ))}
                     <OperatorButton onPress={() => handleOperatorPress('-')}>
-                        <AntDesign name="minus" size={30} color="white" />
+                        <AntDesign name="minus" size={buttonSize / 2.5} color="white" />
                     </OperatorButton>
                 </View>
 
@@ -193,7 +225,14 @@ const Home = () => {
                             key={num}
                             onPress={() => handleNumberPress(String(num))}
                             activeOpacity={0.5}
-                            className="bg-[#333333] w-[80px] h-[80px] flex justify-center items-center rounded-full"
+                            style={{
+                                backgroundColor: '#333333',
+                                width: buttonSize,
+                                height: buttonSize,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                borderRadius: buttonSize / 2,
+                            }}
                         >
                             <Text className="text-4xl text-white">{num}</Text>
                         </TouchableOpacity>
@@ -208,14 +247,28 @@ const Home = () => {
                     <TouchableOpacity
                         onPress={() => handleNumberPress("0")}
                         activeOpacity={0.5}
-                        className="bg-[#333333] w-[170px] h-[80px] flex justify-center items-center rounded-full"
+                        style={{
+                            backgroundColor: '#333333',
+                            width: buttonSize * 2.1,
+                            height: buttonSize,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            borderRadius: buttonSize / 2,
+                        }}
                     >
                         <Text className="text-4xl text-white">0</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={handleDecimal}
                         activeOpacity={0.5}
-                        className="bg-[#333333] w-[80px] h-[80px] flex justify-center items-center rounded-full"
+                        style={{
+                            backgroundColor: '#333333',
+                            width: buttonSize,
+                            height: buttonSize,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            borderRadius: buttonSize / 2,
+                        }}
                     >
                         <Text className="text-4xl text-white">.</Text>
                     </TouchableOpacity>
@@ -227,6 +280,5 @@ const Home = () => {
         </SafeAreaView>
     );
 };
-
 
 export default Home;
